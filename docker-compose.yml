@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  # --- Base de Datos ---
+  taskflow-db:
+    image: postgres:15
+    container_name: taskflow_db
+    environment:
+      POSTGRES_DB: taskflow
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - taskflow-net
+
+  # --- API (Backend) ---
+  taskflow-api:
+    container_name: taskflow_api
+    build: ./api-taskflow  # Busca la carpeta api-taskflow
+    ports:
+      - "8080:8080"
+    depends_on:
+      - taskflow-db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://taskflow-db:5432/taskflow
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: password
+      SPRING_JPA_HIBERNATE_DDL_AUTO: validate
+      SPRING_JPA_HIBERNATE_NAMING_PHYSICAL_STRATEGY: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    networks:
+      - taskflow-net
+
+  # --- WEB (Frontend - NUEVO) ---
+  taskflow-web:
+    container_name: taskflow_web
+    build: ./com.taskflow  # Busca la carpeta com.taskflow
+    ports:
+      - "80:80"
+    depends_on:
+      - taskflow-api
+    environment:
+      API_URL: http://taskflow-api:8080/api
+    networks:
+      - taskflow-net
+
+networks:
+  taskflow-net:
+    driver: bridge

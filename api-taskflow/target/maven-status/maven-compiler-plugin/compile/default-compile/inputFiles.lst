@@ -1,0 +1,9 @@
+C:\Users\Samuel GD\API-TaskFlow\api-taskflow\src\main\java\com\taskflow\api\controller\UsuarioController.java
+C:\Users\Samuel GD\API-TaskFlow\api-taskflow\src\main\java\com\taskflow\api\model\Usuario.java
+C:\Users\Samuel GD\API-TaskFlow\api-taskflow\src\main\java\com\taskflow\api\repository\UsuarioRepository.java
+C:\Users\Samuel GD\API-TaskFlow\api-taskflow\src\main\java\com\taskflow\api\init\DataInitializer.java
+C:\Users\Samuel GD\API-TaskFlow\api-taskflow\src\main\java\com\taskflow\api\model\Rol.java
+C:\Users\Samuel GD\API-TaskFlow\api-taskflow\src\main\java\com\taskflow\api\repository\RolRepository.java
+C:\Users\Samuel GD\API-TaskFlow\api-taskflow\src\main\java\com\taskflow\api\ApiTaskflowApplication.java
+C:\Users\Samuel GD\API-TaskFlow\api-taskflow\src\main\java\com\taskflow\api\config\SecurityConfig.java
+C:\Users\Samuel GD\API-TaskFlow\api-taskflow\src\main\java\com\taskflow\api\dto\UsuarioDTO.java

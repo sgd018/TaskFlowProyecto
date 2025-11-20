@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitar Usuario - TaskFlow</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="logo">TaskFlow</div>
+            <nav>
+                <ul>
+                    <li><a href="/dashboard">Dashboard</a></li>
+                    <li><a href="/usuarios">Gestión Usuarios</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="page-header">
+                 <div style="display: flex; align-items: center; gap: 16px;">
+                    <button class="menu-toggle" id="menu-toggle">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 12H21M3 6H21M3 18H21" stroke="#1E293B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                    <h1>Invitar Usuario</h1>
+                </div>
+                <a href="usuarios.html" class="btn btn-secondary">Cancelar</a>
+            </header>
+            <div class="card" style="max-width: 600px;">
+			    <form action="/guardar-usuario" method="post">
+			        <div class="form-group">
+			            <label for="user-name">Nombre</label>
+			            <input type="text" id="user-name" name="nombre" class="form-control" required>
+			        </div>
+			        <div class="form-group">
+			            <label for="user-email">Email del usuario</label>
+			            <input type="email" id="user-email" name="email" class="form-control" required>
+			        </div>
+			        <div class="form-group">
+			             <label for="user-role">Rol</label>
+			             <select id="user-role" name="rolNombre" class="form-control">
+			                 <option value="Miembro">Miembro</option>
+			                 <option value="Administrador">Administrador</option>
+			             </select>
+			        </div>
+			        <button type="submit" class="btn btn-primary">Enviar Invitación</button>
+			    </form>
+			</div>
+        </main>
+    </div>
+</body>
+</html>

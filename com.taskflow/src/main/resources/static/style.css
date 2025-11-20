@@ -1,0 +1,669 @@
+/* --- Guía de Estilos y Base --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+:root {
+    --azul-principal: #4A69FF;
+    --gris-oscuro-texto: #1E293B;
+    --fondo-principal: #F8FAFC;
+    --fondo-panel: #FFFFFF;
+    --bordes-divisores: #E2E8F0;
+    --texto-secundario: #64748B;
+    --exito: #108981;
+    --advertencia: #F59E0B;
+    --peligro: #EF4444;
+    --info: #3B82F6;
+    --font-family: 'Inter', sans-serif;
+    --border-radius: 8px;
+    --box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+    --sidebar-width: 240px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--fondo-principal);
+    color: var(--gris-oscuro-texto);
+    font-size: 14px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--azul-principal); text-decoration: none; font-weight: 500; }
+h1 { font-size: 28px; font-weight: 600; }
+h2 { font-size: 20px; font-weight: 600; }
+h3 { font-size: 16px; font-weight: 500; }
+
+/* --- Estructura Principal y Responsiva --- */
+.app-layout { display: flex; }
+
+.sidebar {
+    width: var(--sidebar-width);
+    background-color: var(--fondo-panel);
+    height: 100vh;
+    padding: 24px;
+    border-right: 1px solid var(--bordes-divisores);
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    transition: transform 0.3s ease-in-out;
+}
+
+.main-content {
+    flex-grow: 1;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 24px 32px;
+    min-width: 0;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+/* --- Selector de Proyecto --- */
+.project-switcher {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+.project-switcher-title {
+    font-size: 28px;
+    font-weight: 600;
+}
+.project-switcher-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: var(--fondo-panel);
+    border: 1px solid var(--bordes-divisores);
+    border-radius: var(--border-radius);
+    padding: 4px 8px;
+}
+#current-project-name {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--azul-principal);
+}
+.project-switcher-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--gris-oscuro-texto);
+    padding: 4px;
+}
+.project-switcher-btn:hover {
+    color: var(--azul-principal);
+}
+
+/* --- Componentes --- */
+.card {
+    background-color: var(--fondo-panel);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--bordes-divisores);
+    box-shadow: var(--box-shadow);
+    padding: 24px;
+}
+
+.btn {
+    padding: 10px 16px; border: none; border-radius: var(--border-radius);
+    font-weight: 500; font-size: 14px; cursor: pointer; text-align: center;
+    transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
+}
+.btn:hover { box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1); }
+.btn-primary { background-color: var(--azul-principal); color: white; }
+.btn-primary:hover { background-color: #3B5BFF; }
+.btn-secondary { background-color: transparent; color: var(--azul-principal); border: 1px solid var(--azul-principal); }
+.btn-secondary:hover { background-color: #F0F3FF; }
+.btn-danger { background-color: var(--peligro); color: white; }
+.btn-danger:hover { background-color: #D93A3A; }
+.btn-success { background-color: var(--exito); color: white; }
+.btn-success:hover { background-color: #0D6E66; }
+.btn-icon { background: none; border: none; padding: 4px; cursor: pointer; }
+
+.form-group { margin-bottom: 16px; }
+.form-group label { display: block; font-size: 12px; font-weight: 500; color: var(--texto-secundario); margin-bottom: 6px; }
+.form-control { width: 100%; padding: 10px; border: 1px solid var(--bordes-divisores); border-radius: var(--border-radius); font-size: 14px; font-family: var(--font-family); }
+.form-control:focus { outline: none; border-color: var(--azul-principal); box-shadow: 0 0 0 2px #D6DEFF; }
+textarea.form-control { min-height: 80px; }
+
+/* --- Página de Login --- */
+.login-container { display: flex; justify-content: center; align-items: center; height: 100vh; padding: 16px;}
+.login-card { width: 100%; max-width: 400px; text-align: center; }
+.login-card h1 { margin-bottom: 24px; }
+.login-card .form-group { text-align: left; }
+.login-card .btn { width: 100%; margin-top: 8px; }
+.login-card .extra-links { margin-top: 16px; font-size: 12px; }
+
+/* --- Sidebar --- */
+.sidebar .logo { font-size: 24px; font-weight: 600; color: var(--azul-principal); margin-bottom: 32px; }
+.sidebar nav ul { list-style: none; }
+.sidebar nav li a { display: block; padding: 12px 16px; border-radius: var(--border-radius); color: var(--gris-oscuro-texto); font-weight: 500; }
+.sidebar nav li a.active, .sidebar nav li a:hover { background-color: #F0F3FF; color: var(--azul-principal); }
+
+/* --- Grids (Dashboard, Informes, etc.) --- */
+.content-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+}
+.stat-card { text-align: center; }
+.stat-card .stat-number { font-size: 48px; font-weight: 600; color: var(--azul-principal); }
+.stat-card .stat-label { font-size: 16px; color: var(--texto-secundario); }
+
+/* --- Tabla Responsiva --- */
+.table-wrapper { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: 12px 16px; text-align: left; border-bottom: 1px solid var(--bordes-divisores); }
+thead th { font-size: 12px; font-weight: 500; color: var(--texto-secundario); text-transform: uppercase; background-color: var(--fondo-principal); }
+tbody tr:last-child td { border-bottom: none; }
+
+/* --- Badges de Estado --- */
+.status-badge { padding: 4px 8px; border-radius: 12px; font-size: 12px; font-weight: 500; color: white; display: inline-block; }
+.status-completed { background-color: var(--exito); }
+.status-in-progress { background-color: var(--info); }
+.status-pending { background-color: var(--advertencia); } 
+.status-blocked { background-color: var(--peligro); } 
+
+/* --- Kanban Board --- */
+.kanban-board { display: flex; gap: 24px; overflow-x: auto; padding-bottom: 16px; }
+.kanban-column { min-width: 280px; width: 280px; background-color: #F1F5F9; border-radius: var(--border-radius); padding: 16px; }
+.kanban-column-title { font-size: 16px; font-weight: 500; margin-bottom: 16px; }
+.kanban-card { background: var(--fondo-panel); border: 1px solid var(--bordes-divisores); border-radius: var(--border-radius); padding: 16px; margin-bottom: 12px; box-shadow: var(--box-shadow); cursor: grab; }
+.kanban-card h3 { margin-bottom: 8px; }
+.kanban-card-user { 
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--texto-secundario);
+    margin-bottom: 4px;
+}
+.kanban-card .priority-badge { font-size: 10px; padding: 2px 6px; border-radius: 4px; color: white; float: right; }
+.priority-alta { background-color: var(--peligro); }
+.priority-media { background-color: var(--advertencia); }
+.priority-baja { background-color: var(--info); }
+.kanban-card.dragging { opacity: 0.5; }
+.kanban-column.drag-over { border: 2px dashed var(--azul-principal); }
+
+/* --- Controlador de Tiempo (Dashboard) --- */
+.time-tracker { text-align: center; }
+.time-tracker-display {
+    font-size: 48px;
+    font-weight: 600;
+    color: var(--gris-oscuro-texto);
+    margin-bottom: 16px;
+}
+.time-tracker-controls {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+/* --- Feed de Actividad (Dashboard) --- */
+.activity-feed { 
+    list-style: none; 
+    max-height: 250px; 
+    overflow-y: auto;
+}
+.activity-feed li {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--bordes-divisores);
+    font-size: 13px;
+    color: var(--texto-secundario);
+}
+.activity-feed li:last-child { border-bottom: none; }
+.activity-feed li strong { color: var(--gris-oscuro-texto); }
+
+/* --- Menú Hamburguesa para Móvil/Tablet --- */
+.menu-toggle { display: none; background: none; border: none; cursor: pointer; }
+
+/* --- Notificación (para feedback) --- */
+#notification {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--gris-oscuro-texto);
+    color: white;
+    padding: 12px 24px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    z-index: 2000;
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s;
+    pointer-events: none;
+}
+#notification.show {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+
+/* --- NUEVO: Gestión de Equipos --- */
+.team-management-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+}
+.member-list { list-style: none; }
+.member-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--bordes-divisores);
+}
+.member-list-item:last-child { border-bottom: none; }
+.add-member-form { margin-top: 16px; }
+
+/* Contenedor General */
+.chart-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    min-height: 250px; /* Asegura altura mínima */
+}
+.placeholder-chart {
+    flex-grow: 1; background-color: #F1F5F9; border-radius: var(--border-radius);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--texto-secundario); font-size: 12px; min-height: 200px;
+}
+
+/* Gráfico de Barras */
+.bar-chart {
+    display: flex;
+    gap: 12px; /* Espacio entre barras */
+    height: 200px; /* Altura fija para el área de barras */
+    border-bottom: 1px solid var(--bordes-divisores);
+    padding: 0 8px; /* Pequeño padding lateral */
+    align-items: flex-end; /* Alinea las barras a la base */
+    width: 100%; /* Ocupa el ancho del contenedor */
+}
+.bar-wrapper {
+    flex: 1; /* Distribuye el espacio equitativamente */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative; /* Para el tooltip (opcional) */
+    min-width: 20px; /* Ancho mínimo para barras pequeñas */
+}
+.bar {
+    width: 80%; /* Ancho de la barra relativo a su wrapper */
+    max-width: 40px; /* Ancho máximo */
+    background-color: var(--azul-principal);
+    border-radius: 4px 4px 0 0;
+    transition: height 0.3s ease-out;
+    cursor: pointer; /* Indica que se puede interactuar (tooltip) */
+}
+.bar:hover {
+    background-color: #3B5BFF; /* Azul más oscuro al pasar el ratón */
+}
+.bar-label {
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--texto-secundario);
+    margin-top: 4px; /* Espacio entre barra y etiqueta */
+    white-space: nowrap; /* Evita saltos de línea feos */
+    overflow: hidden; /* Oculta texto si no cabe */
+    text-overflow: ellipsis; /* Añade "..." si no cabe */
+    width: 100%; /* Asegura que text-overflow funcione */
+}
+
+/* Gráfico de Tarta (Pie) */
+.pie-chart-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centra horizontalmente */
+    gap: 24px;
+    flex-wrap: wrap; /* Permite que la leyenda pase abajo si no cabe */
+}
+.pie-chart {
+    flex-shrink: 0; /* Evita que el gráfico se encoja */
+    width: 150px; /* Tamaño fijo más pequeño */
+    height: 150px;
+    border-radius: 50%;
+    /* border: 1px solid var(--bordes-divisores); No necesita borde si tiene fondo */
+    position: relative; /* Para tooltips si se añaden */
+}
+.chart-legend {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-width: 150px; /* Limita ancho de leyenda */
+}
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    margin-bottom: 6px;
+    white-space: nowrap; /* Evita saltos raros */
+}
+.legend-color-box {
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+    flex-shrink: 0; /* Evita que el cuadro se encoja */
+}
+
+
+/* ------------------------------------------- */
+/* --- MEDIA QUERIES PARA RESPONSIVIDAD --- */
+/* ------------------------------------------- */
+@media (max-width: 1024px) {
+    .sidebar {
+        position: fixed; left: 0; top: 0; height: 100%;
+        z-index: 1000; transform: translateX(-100%);
+        box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+    body.sidebar-open .sidebar { transform: translateX(0); }
+    .main-content { width: 100%; margin-left: 0; }
+    .menu-toggle { display: block; }
+}
+
+@media (max-width: 768px) {
+    .main-content { padding: 16px; }
+    h1 { font-size: 24px; }
+    h2 { font-size: 18px; }
+    .page-header { margin-bottom: 16px; }
+
+    .project-switcher { flex-direction: column; align-items: flex-start; }
+
+    .responsive-table thead { display: none; }
+    .responsive-table tr {
+        display: block; margin-bottom: 16px;
+        border: 1px solid var(--bordes-divisores);
+        border-radius: var(--border-radius);
+        padding: 16px; background: var(--fondo-panel);
+    }
+    .responsive-table td {
+        display: flex; justify-content: space-between; align-items: center;
+        border-bottom: 1px dashed var(--bordes-divisores);
+        padding: 10px 0; white-space: normal;
+    }
+    .responsive-table td:last-child { border-bottom: none; }
+    .responsive-table td::before {
+        content: attr(data-label);
+        font-weight: 600; margin-right: 16px;
+        color: var(--texto-secundario);
+    }
+
+    /* Stack de gestión de equipo en móvil */
+    .team-management-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --- Estilos de Título de Tarea Clicable --- */
+.task-title-link {
+    color: var(--gris-oscuro-texto);
+    font-weight: 600;
+}
+.task-title-link:hover {
+    color: var(--azul-principal);
+    text-decoration: underline;
+}
+
+/* --- Estilos Página Detalle de Tarea --- */
+.task-detail-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    border-top: 1px solid var(--bordes-divisores);
+    border-bottom: 1px solid var(--bordes-divisores);
+    padding: 20px 0;
+}
+.task-detail-item label {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--texto-secundario);
+    margin-bottom: 4px;
+    display: block;
+    text-transform: uppercase;
+}
+.task-detail-item div, .task-detail-item p {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--gris-oscuro-texto);
+}
+
+/* --- Estilos Página de Mensajes --- */
+.messages-layout {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 24px;
+    height: 70vh;
+}
+.user-list-container {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+.user-list-container h2 {
+    padding: 24px 24px 16px 24px;
+    margin: 0;
+}
+.user-list {
+    list-style: none;
+    overflow-y: auto;
+    flex-grow: 1;
+}
+.user-list-item {
+    padding: 16px 24px;
+    border-top: 1px solid var(--bordes-divisores);
+    cursor: pointer;
+}
+.user-list-item:hover {
+    background-color: #F8FAFC;
+}
+.user-list-item.active {
+    background-color: #F0F3FF;
+    border-right: 3px solid var(--azul-principal);
+    font-weight: 600;
+}
+
+.chat-window {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.chat-messages {
+    flex-grow: 1;
+    overflow-y: auto;
+    border: 1px solid var(--bordes-divisores);
+    border-radius: var(--border-radius);
+    padding: 16px;
+    margin-bottom: 16px;
+}
+.chat-placeholder {
+    color: var(--texto-secundario);
+    text-align: center;
+    margin-top: 20px;
+}
+.chat-input-form {
+    display: flex;
+    gap: 12px;
+}
+.chat-input-form input { flex-grow: 1; }
+
+/* Media query para layout de mensajes en móvil */
+@media (max-width: 768px) {
+    .messages-layout {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+    .user-list-container {
+        height: 250px;
+    }
+}
+
+/* --- Estilos Sidebar Footer (Configuración) --- */
+.sidebar {
+    /* Asegura que el footer se vaya abajo */
+    display: flex;
+    flex-direction: column;
+}
+.sidebar nav {
+    flex-grow: 1; /* Empuja el footer hacia abajo */
+}
+.sidebar-footer {
+    margin-top: 24px;
+    border-top: 1px solid var(--bordes-divisores);
+    padding-top: 16px;
+}
+.sidebar-footer a {
+    display: block;
+    padding: 12px 16px;
+    border-radius: var(--border-radius);
+    color: var(--texto-secundario);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.sidebar-footer a:hover {
+    color: var(--azul-principal);
+    background-color: #F0F3FF;
+}
+.sidebar-footer a.active {
+    color: var(--azul-principal);
+    background-color: #F0F3FF;
+}
+
+/* --- Estilo Badge de Notificación --- */
+.notification-badge {
+    background-color: var(--peligro);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-left: 8px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+.notification-badge.show {
+    opacity: 1;
+}
+
+/* --- Estilos Sección de Comentarios (Detalle Tarea) --- */
+.task-comments {
+    margin-top: 24px;
+}
+.comment-list {
+    list-style: none;
+    max-height: 400px;
+    overflow-y: auto;
+    margin-bottom: 24px;
+}
+.comment-item {
+    padding: 16px;
+    border-bottom: 1px solid var(--bordes-divisores);
+}
+.comment-item:last-child {
+    border-bottom: none;
+}
+.comment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+.comment-author {
+    font-weight: 600;
+    color: var(--gris-oscuro-texto);
+}
+.comment-date {
+    font-size: 12px;
+    color: var(--texto-secundario);
+}
+.comment-body {
+    white-space: pre-wrap; /* Respeta saltos de línea */
+}
+.comment-form {
+    display: flex;
+    gap: 12px;
+}
+.comment-form textarea {
+    flex-grow: 1;
+    min-height: 50px;
+}
+.comment-form button {
+    align-self: flex-start; /* Alinea el botón arriba */
+}
+
+/* --- Estilos Mensajes Tipo WhatsApp --- */
+.chat-messages {
+    display: flex;
+    flex-direction: column; /* Apila mensajes verticalmente */
+}
+
+.message-bubble {
+    max-width: 70%;
+    padding: 10px 15px;
+    border-radius: 18px; /* Más redondeado */
+    margin-bottom: 10px;
+    line-height: 1.4;
+    word-wrap: break-word; /* Evita que texto largo desborde */
+}
+
+.message-sent {
+    background-color: #DCF8C6; /* Verde claro tipo WhatsApp */
+    align-self: flex-end; /* Alinea a la derecha */
+    border-bottom-right-radius: 4px; /* Esquina menos redondeada */
+}
+.message-sent strong { /* Oculta el "Tú:" en mensajes enviados */
+   display: none;
+}
+
+
+.message-received {
+    background-color: var(--fondo-panel); /* Blanco */
+    border: 1px solid var(--bordes-divisores); /* Borde sutil */
+    align-self: flex-start; /* Alinea a la izquierda */
+    border-bottom-left-radius: 4px; /* Esquina menos redondeada */
+}
+.message-received strong { /* Estilo del nombre del remitente */
+    display: block;
+    font-weight: 600;
+    color: var(--azul-principal); /* O el color que prefieras */
+    margin-bottom: 2px;
+}
+
+/* --- Estilos Página Configurar Proyecto --- */
+.project-settings-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr; /* Columna izq más pequeña */
+    gap: 24px;
+}
+
+/* Tabla simple para tareas del proyecto */
+.simple-table th, .simple-table td {
+    padding: 8px 12px;
+    white-space: normal; /* Permitir saltos de línea */
+}
+.simple-table thead th {
+    background-color: transparent; /* Fondo más simple */
+    border-bottom: 2px solid var(--bordes-divisores); /* Línea más gruesa */
+}
+
+/* Media query para stack en móvil */
+@media (max-width: 900px) { /* Ajustar breakpoint si es necesario */
+    .project-settings-layout {
+        grid-template-columns: 1fr; /* Una sola columna */
+    }
+}
+
+/* --- Estilos Formularios Asignar (Config Proyecto) --- */
+.assign-form {
+    display: flex;
+    align-items: flex-end; /* Alinea el botón con la base del select */
+    gap: 12px;
+}
+.assign-form .form-group {
+    flex-grow: 1; /* El select ocupa el espacio restante */
+    margin-bottom: 0; /* Quita margen inferior */
+}

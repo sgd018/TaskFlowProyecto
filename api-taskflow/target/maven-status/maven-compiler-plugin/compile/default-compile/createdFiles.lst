@@ -1,0 +1,9 @@
+com\taskflow\api\init\DataInitializer.class
+com\taskflow\api\ApiTaskflowApplication.class
+com\taskflow\api\model\Rol.class
+com\taskflow\api\repository\UsuarioRepository.class
+com\taskflow\api\controller\UsuarioController.class
+com\taskflow\api\dto\UsuarioDTO.class
+com\taskflow\api\model\Usuario.class
+com\taskflow\api\config\SecurityConfig.class
+com\taskflow\api\repository\RolRepository.class

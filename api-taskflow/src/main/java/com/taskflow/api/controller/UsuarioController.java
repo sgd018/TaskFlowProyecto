@@ -76,6 +76,30 @@ public class UsuarioController {
         }
         return ResponseEntity.notFound().build();
     }
+    
+    @PutMapping("/{id}")
+    public ResponseEntity<?> editarUsuario(@PathVariable Integer id, @RequestBody UsuarioDTO usuarioDTO) {
+        return usuarioRepository.findById(id).map(usuario -> {
+            // Actualizamos datos básicos
+            usuario.setNombre(usuarioDTO.getNombre());
+            usuario.setEmail(usuarioDTO.getEmail());
+
+            // Actualizamos el Rol si viene en el JSON
+            if (usuarioDTO.getRolNombre() != null) {
+                rolRepository.findByNombreRol(usuarioDTO.getRolNombre())
+                             .ifPresent(usuario::setRol);
+            }
+
+            // Actualizamos la Contraseña SOLO si viene en el JSON
+            // (Así evitas borrar la contraseña si solo editas el nombre)
+            if (usuarioDTO.getContrasenaHash() != null && !usuarioDTO.getContrasenaHash().isEmpty()) {
+                usuario.setContrasenaHash(usuarioDTO.getContrasenaHash());
+            }
+
+            usuarioRepository.save(usuario);
+            return ResponseEntity.ok(convertirADTO(usuario));
+        }).orElse(ResponseEntity.notFound().build());
+    }
 
     // Convertidor
     private UsuarioDTO convertirADTO(Usuario u) {

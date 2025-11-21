@@ -100,6 +100,14 @@ public class UsuarioController {
             return ResponseEntity.ok(convertirADTO(usuario));
         }).orElse(ResponseEntity.notFound().build());
     }
+    
+    @GetMapping("/{id}")
+    public ResponseEntity<UsuarioDTO> obtenerUsuario(@PathVariable Integer id) {
+        return usuarioRepository.findById(id)
+                .map(this::convertirADTO)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
 
     // Convertidor
     private UsuarioDTO convertirADTO(Usuario u) {

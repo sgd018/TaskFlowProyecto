@@ -1,5 +1,7 @@
+com\taskflow\web\dto\UsuarioDTO.class
 com\taskflow\web\config\WebSecurityConfig.class
 com\taskflow\web\controller\AppController.class
-com\taskflow\web\dto\UsuarioDTO.class
 com\taskflow\web\service\UsuarioService.class
+com\taskflow\web\config\AuthInterceptor.class
 com\taskflow\web\WebTaskflowApplication.class
+com\taskflow\web\config\WebConfig.class

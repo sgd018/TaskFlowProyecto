@@ -1,5 +1,7 @@
 C:\Users\Samuel GD\API-TaskFlow\com.taskflow\src\main\java\com\taskflow\web\service\UsuarioService.java
 C:\Users\Samuel GD\API-TaskFlow\com.taskflow\src\main\java\com\taskflow\web\WebTaskflowApplication.java
 C:\Users\Samuel GD\API-TaskFlow\com.taskflow\src\main\java\com\taskflow\web\controller\AppController.java
+C:\Users\Samuel GD\API-TaskFlow\com.taskflow\src\main\java\com\taskflow\web\config\AuthInterceptor.java
+C:\Users\Samuel GD\API-TaskFlow\com.taskflow\src\main\java\com\taskflow\web\config\WebConfig.java
 C:\Users\Samuel GD\API-TaskFlow\com.taskflow\src\main\java\com\taskflow\web\dto\UsuarioDTO.java
 C:\Users\Samuel GD\API-TaskFlow\com.taskflow\src\main\java\com\taskflow\web\config\WebSecurityConfig.java

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - TaskFlow</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" th:href="@{/style.css}">
 </head>
 <body id="dashboard-page">
     <div class="app-layout">
@@ -12,11 +12,11 @@
             <div class="logo">TaskFlow</div>
             <nav>
                 <ul>
-                    <li><a href="/dashboard">Dashboard</a></li>
+                    <li><a href="/dashboard" style="background-color: #F0F3FF; color: #4A69FF;">Dashboard</a></li>
                     <li><a href="/usuarios">Gestión Usuarios</a></li>
                 </ul>
             </nav>
-        </aside>
+		</aside>
 
         <main class="main-content">
             <header class="page-header">
@@ -24,13 +24,21 @@
                     <button class="menu-toggle" id="menu-toggle">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 12H21M3 6H21M3 18H21" stroke="#1E293B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     </button>
-                    <h1 id="welcome-header">Hola, Usuario</h1>
+                    
+                    <h1 id="welcome-header" th:text="'Hola, ' + ${session.usuarioLogueado.nombre}">Hola, Usuario</h1>
                 </div>
-                <a href="#" id="logout-btn" class="btn btn-secondary">Cerrar Sesión</a>
+                <a href="/logout" id="logout-btn" class="btn btn-secondary">Cerrar Sesión</a>
             </header>
             
-            <div>
-                <p>Estamos en el desarrollo de esta página</p>
+            <div class="construction-container">
+                <div class="card construction-card">
+                    <div class="icon-circle">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-rocket-icon lucide-rocket"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
+                    </div>
+                    <h2>Panel en Desarrollo</h2>
+                    <p>Estamos construyendo métricas increíbles para ti.</p>
+                    <p style="font-size: 12px; color: #94a3b8; margin-top: 8px;">Vuelve pronto para ver las novedades.</p>
+                </div>
             </div>
         </main>
     </div>

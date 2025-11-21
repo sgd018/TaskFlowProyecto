@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Usuario - TaskFlow</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="logo">TaskFlow</div>
+            <nav>
+                <ul>
+                    <li><a href="/dashboard">Dashboard</a></li>
+                    <li><a href="/usuarios" style="background-color: #F0F3FF; color: #4A69FF;">Gestión Usuarios</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="page-header">
+                 <div style="display: flex; align-items: center; gap: 16px;">
+                     <h1>Editar Usuario</h1>
+                </div>
+                <a href="/usuarios" class="btn btn-secondary">Cancelar</a>
+            </header>
+
+            <div class="card" style="max-width: 600px;">
+                <form action="/actualizar-usuario" method="post">
+                    
+                    <input type="hidden" name="usuarioId" th:value="${usuario.usuarioId}">
+                    
+                    <input type="hidden" name="contrasenaHash" th:value="${usuario.contrasenaHash}">
+
+                    <div class="form-group">
+                        <label for="user-name">Nombre</label>
+                        <input type="text" id="user-name" name="nombre" class="form-control" th:value="${usuario.nombre}" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="user-email">Email</label>
+                        <input type="email" id="user-email" name="email" class="form-control" th:value="${usuario.email}" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="user-role">Rol</label>
+                        <select id="user-role" name="rolNombre" class="form-control">
+                            <option value="Miembro" th:selected="${usuario.rolNombre == 'Miembro'}">Miembro</option>
+                            <option value="Administrador" th:selected="${usuario.rolNombre == 'Administrador'}">Administrador</option>
+                        </select>
+                    </div>
+                    
+                    <div style="margin-top: 20px; border-top: 1px solid #eee; padding-top: 15px;">
+                        <small style="color: gray;">* La contraseña no se puede cambiar desde esta pantalla.</small>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="margin-top: 15px;">Guardar Cambios</button>
+                </form>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

@@ -45,10 +45,13 @@ public class AppController {
 
     // --- Dashboard (SOLO ESTE, borra cualquier otro que tengas) ---
     @GetMapping("/dashboard")
-    public String dashboard(HttpSession session) {
-        if (session.getAttribute("usuarioLogueado") == null) {
-            return "redirect:/";
-        }
+    public String dashboard(Model model, HttpSession session) {
+        // 1. Recuperamos el usuario que guardamos en sesión durante el login
+        UsuarioDTO usuario = (UsuarioDTO) session.getAttribute("usuarioLogueado");
+        
+        // 2. Lo pasamos a la vista con el nombre "usuario"
+        model.addAttribute("usuario", usuario);
+        
         return "dashboard";
     }
 
@@ -98,5 +101,38 @@ public class AppController {
     public String eliminarUsuario(@PathVariable Integer id) {
         usuarioService.eliminarUsuario(id);
         return "redirect:/usuarios";
+    }
+    
+    // --- Mostrar Formulario de Edición ---
+    @GetMapping("/usuarios/editar/{id}")
+    public String formEditar(@PathVariable Integer id, Model model) {
+        // 1. Pedimos el usuario actual a la API
+        UsuarioDTO usuario = usuarioService.obtenerPorId(id);
+        
+        // 2. Lo pasamos a la vista para que los inputs salgan rellenos
+        model.addAttribute("usuario", usuario);
+        
+        return "editar-usuario"; // Crea este HTML en el siguiente paso
+    }
+
+    // --- Procesar la Edición ---
+    @PostMapping("/actualizar-usuario")
+    public String actualizarUsuario(@ModelAttribute UsuarioDTO usuario, org.springframework.web.servlet.mvc.support.RedirectAttributes redirectAttrs) {
+        try {
+            // Enviamos los cambios a la API
+            usuarioService.actualizarUsuario(usuario);
+            redirectAttrs.addFlashAttribute("mensaje", "Usuario actualizado correctamente.");
+        } catch (Exception e) {
+            e.printStackTrace();
+            redirectAttrs.addFlashAttribute("error", "Error al actualizar el usuario.");
+        }
+        return "redirect:/usuarios";
+    }
+    
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        // Esto borra todos los datos de la sesión (el usuario logueado)
+        session.invalidate(); 
+        return "redirect:/"; // Nos devuelve a la pantalla de login
     }
 }

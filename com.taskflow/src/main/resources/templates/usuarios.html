@@ -13,7 +13,7 @@
             <nav>
                 <ul>
                     <li><a href="/dashboard">Dashboard</a></li>
-                    <li><a href="/usuarios">Gestión Usuarios</a></li>
+                    <li><a href="/usuarios" style="background-color: #F0F3FF; color: #4A69FF;">Gestión Usuarios</a></li>
                 </ul>
             </nav>
         </aside>
@@ -54,13 +54,19 @@
 				                    <span class="status-badge status-in-progress" th:text="${u.rolNombre}">Rol</span>
 				                </td>
 				                <td>
-				                   <a th:href="@{/usuarios/eliminar/{id}(id=${u.usuarioId})}" 
-									   class="btn btn-danger" 
-									   style="padding: 5px;"
-									   onclick="return confirm('¿Estás seguro de que quieres eliminar a este usuario? Esta acción no se puede deshacer.');">
-									   Eliminar
-									</a>
-				                </td>
+								    <a th:href="@{/usuarios/editar/{id}(id=${u.usuarioId})}" 
+								       class="btn btn-primary" 
+								       style="padding: 5px 10px; font-size: 12px; margin-right: 5px; text-decoration: none;">
+								       Editar
+								    </a>
+								
+								    <a th:href="@{/usuarios/eliminar/{id}(id=${u.usuarioId})}" 
+								       class="btn btn-danger" 
+								       style="padding: 5px 10px; font-size: 12px;"
+								       onclick="return confirm('¿Estás seguro?');">
+								       Eliminar
+								    </a>
+								</td>
 				            </tr>
 				        </tbody>
 				    </table>

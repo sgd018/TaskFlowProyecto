@@ -60,4 +60,18 @@ public class UsuarioService {
     public void eliminarUsuario(Integer id) {
         restTemplate.delete(apiUrl + "/usuarios/" + id);
     }
+    
+    // --- Obtener usuario por ID (GET) ---
+    public UsuarioDTO obtenerPorId(Integer id) {
+        // GET http://taskflow-api:8080/api/usuarios/{id}
+        return restTemplate.getForObject(apiUrl + "/usuarios/" + id, UsuarioDTO.class);
+    }
+
+    // --- Actualizar usuario (PUT) ---
+    public void actualizarUsuario(UsuarioDTO usuario) {
+        // PUT http://taskflow-api:8080/api/usuarios/{id}
+        // Como la API espera el ID en la URL, lo sacamos del objeto usuario
+        String url = apiUrl + "/usuarios/" + usuario.getUsuarioId();
+        restTemplate.put(url, usuario);
+    }
 }
